@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<head>
+<style>
+    :root {
+        --x: 20px;
+    }
+    #container {
+        display: grid;
+        grid-template-columns: repeat(600, var(--x));
+        grid-template-rows: repeat(10, var(--x));
+    }
+    #container > * {
+        height: var(--x);
+    }
+    .cast {
+        font-size: calc(var(--x) * .8);
+        white-space: nowrap;
+        outline: 1px solid black;
+    }
+    .t {
+        grid-row: 1 / span 1;
+        font-size: calc(var(--x) * .8);
+    }
+	#note {
+		display: block;
+		position: fixed;
+		right: 2em;
+		margin-top: 2em;
+	}
+	#input {
+	}
+    </style>
+</head>
+
+<div id="container">
+</div>
+
+<textarea id="note" rows=30 cols=25 onchange="render()">dispelStart
+{time:1:26}
+{time:1:47}
+{time:2:04}
+{time:2:21} (Mitte)
+{time:2:42}
+{time:2:59}
+{time:3:16} (Mitte)
+{time:3:37}
+{time:3:54}
+{time:4:11} (Mitte)
+{time:4:32}
+{time:4:49}
+{time:5:06} (Mitte)
+{time:5:27}
+{time:5:44}
+{time:6:01} (Mitte)
+{time:6:22}
+{time:6:39}
+{time:6:56} (Mitte)
+dispelEnd</textarea>
+
+<textarea id="input" onchange="render()">
+00:06.006	Neldris begins casting Bellowing Roar
+
+00:10.015	Neldris casts Bellowing Roar
+
+00:14.035	Neldris begins casting Rending Charge
+
+00:19.012	Neldris casts Rending Charge
+
+00:23.968	Neldris begins casting Massive Slam
+
+00:27.480	Neldris casts Massive Slam
+
+00:36.014	Neldris begins casting Bellowing Roar
+
+00:40.018	Neldris casts Bellowing Roar
+
+00:42.010	Neldris begins casting Massive Slam
+
+00:45.493	Neldris casts Massive Slam
+
+00:50.994	Neldris begins casting Rending Charge
+
+00:55.985	Neldris casts Rending Charge
+
+01:01.008	Neldris begins casting Bellowing Roar
+
+01:05.028	Neldris casts Bellowing Roar
+
+01:09.057	Neldris begins casting Rending Charge
+
+01:09.057	Thadrion begins casting Volatile Spew
+
+01:12.053	Thadrion casts Volatile Spew
+
+01:14.063	Neldris casts Rending Charge
+
+01:19.009	Neldris begins casting Massive Slam
+
+01:20.056	Thadrion begins casting Unstable Essence
+
+01:22.506	Neldris casts Massive Slam
+
+01:23.029	Thadrion casts Unstable Essence
+
+01:29.022	Thadrion begins casting Volatile Spew
+
+01:31.039	Neldris begins casting Bellowing Roar
+
+01:32.028	Thadrion casts Volatile Spew
+
+01:35.028	Neldris casts Bellowing Roar
+
+01:37.007	Neldris begins casting Massive Slam
+
+01:40.010	Thadrion begins casting Violent Eruption
+
+01:40.523	Neldris casts Massive Slam
+
+01:43.025	Thadrion casts Violent Eruption
+
+01:54.053	Thadrion begins casting Unstable Essence
+
+01:57.057	Thadrion casts Unstable Essence
+
+02:04.050	Thadrion begins casting Volatile Spew
+
+02:07.065	Thadrion casts Volatile Spew
+
+02:15.058	Thadrion begins casting Unstable Essence
+
+02:18.070	Thadrion casts Unstable Essence
+
+02:24.064	Thadrion begins casting Volatile Spew
+
+02:27.077	Thadrion casts Volatile Spew
+
+02:35.069	Thadrion begins casting Violent Eruption
+
+02:38.056	Thadrion casts Violent Eruption
+
+02:40.055	Rionthus begins casting Temporal Anomaly
+
+02:42.060	Rionthus casts Temporal Anomaly
+
+02:49.069	Thadrion begins casting Unstable Essence
+
+02:50.058	Rionthus begins casting Disintegrate
+
+02:52.056	Thadrion casts Unstable Essence
+
+02:52.056	Rionthus casts Disintegrate
+
+02:52.056	Rionthus casts Disintegrate
+
+02:59.086	Thadrion begins casting Volatile Spew
+
+03:02.087	Thadrion casts Volatile Spew
+
+03:10.084	Thadrion begins casting Unstable Essence
+
+03:13.088	Thadrion casts Unstable Essence
+
+03:16.119	Rionthus begins casting Deep Breath
+
+03:19.072	Thadrion begins casting Volatile Spew
+
+03:19.116	Rionthus casts Deep Breath
+
+03:22.065	Thadrion casts Volatile Spew
+
+03:22.913	Rionthus begins casting Deep Breath
+
+03:23.904	Rionthus casts Deep Breath
+
+03:30.084	Thadrion begins casting Violent Eruption
+
+03:35.075	Rionthus begins casting Temporal Anomaly
+
+03:37.064	Rionthus casts Temporal Anomaly
+
+03:45.075	Rionthus begins casting Disintegrate
+
+03:47.094	Rionthus casts Disintegrate
+
+03:47.094	Rionthus casts Disintegrate
+
+04:11.120	Rionthus begins casting Deep Breath
+
+04:14.108	Rionthus casts Deep Breath
+
+04:17.948	Rionthus begins casting Deep Breath
+
+04:18.957	Rionthus casts Deep Breath
+
+04:30.062	Rionthus begins casting Temporal Anomaly
+
+04:32.059	Rionthus casts Temporal Anomaly
+
+04:40.089	Rionthus begins casting Disintegrate
+
+04:42.088	Rionthus casts Disintegrate
+
+04:42.088	Rionthus casts Disintegrate
+
+05:06.156	Rionthus begins casting Deep Breath
+
+05:09.157	Rionthus casts Deep Breath
+
+05:12.968	Rionthus begins casting Deep Breath
+
+05:14.024	Rionthus casts Deep Breath
+
+05:25.101	Rionthus begins casting Temporal Anomaly
+
+05:27.117	Rionthus casts Temporal Anomaly
+
+05:35.093	Rionthus begins casting Disintegrate
+
+05:37.100	Rionthus casts Disintegrate
+
+05:37.100	Rionthus casts Disintegrate
+
+06:01.213	Rionthus begins casting Deep Breath
+
+06:04.210	Rionthus casts Deep Breath
+
+06:07.968	Rionthus begins casting Deep Breath
+
+06:08.981	Rionthus casts Deep Breath
+
+06:20.120	Rionthus begins casting Temporal Anomaly
+
+06:22.115	Rionthus casts Temporal Anomaly
+
+06:30.149	Rionthus begins casting Disintegrate
+
+</textarea>
+
+
+<script>
+function parseTime(s) {
+    var x = s.split(":", 2);
+    var m = parseInt(x[0]);
+    var s = parseFloat(x[1]);
+
+    return m*60 + Math.round(s);
+}
+
+function parse() {
+    var text = document.getElementById("input").value;
+    var lines = text.split(/\n/).filter(x => x.indexOf("\t") > 0);
+
+    var beginners = {};
+
+
+    return lines.map(x => {
+        tokens = x.split(/\t/, 2);
+
+        var m = tokens[1].match(/(.*) begins casting (.*)$/);
+        if (m) {
+            var evt = {
+                start: parseTime(tokens[0]),
+                actor: m[1],
+                cast: m[2],
+            };
+            beginners[m[1]+"-"+m[2]] = evt;
+            return evt;
+        }
+
+        m = tokens[1].match(/(.*) casts (.*)$/);
+        if (m) {
+            var key = m[1]+"-"+m[2];
+            var evt = beginners[key];
+            if (!evt) {
+                console.log("missing begin cast for", x);
+                return null;
+            }
+
+            evt['end'] = parseTime(tokens[0]);
+            delete beginners[key];
+
+            return null;
+        }
+
+        console.log("unparsable", tokens[1]);
+
+        return null;
+    }).filter(x => !!x);
+}
+
+function fmtTime(t) {
+    var m = Math.trunc(t/60);
+    var s = t%60
+    if (s < 10) {
+        return m+":0"+s;
+    } else {
+        return m+":"+s;
+    }
+}
+
+function newDispell(t) {
+    if (typeof t == "string") {
+        t = parseTime(t)
+    }
+
+	// note.innerText += "{time:"+fmtTime(t)+"}\n";
+
+    return {
+        start: t,
+        end: t+4,
+        cast: 'Dispell',
+    }
+}
+
+function makeTitle(evt) {
+    return fmtTime(evt.start) + " - "+ fmtTime(evt.end) + " ("+(evt.end-evt.start)+"s)";
+}
+
+function parseNote(casts) {
+	var note = document.getElementById("note").value;
+	window.localStorage.setItem('mrt-note', note);
+
+	var lines = note.split(/\n/);
+	for (var i = 0; i < lines.length; i++) {
+		var m = lines[i].match(/\{time:(.*)\}/);
+		if (!m) {
+			continue;
+		}
+
+		casts.push(newDispell(m[1]));
+	}
+}
+
+function render() {
+
+    var casts = parse();
+
+	parseNote(casts);
+
+    // console.log(casts);
+
+    var palette = [
+        "#F9414480",
+        "#8080ff80",
+        "#90BE6D80",
+        "#F8961E80",
+        "#F9C74F80",
+        "#4D908E80",
+        "#57759080",
+        "#F3722C80",
+        "#43AA8B80",
+        "#F9844A80",
+        "#277DA180",
+    ]
+
+    var container = document.getElementById("container");
+    var abilityNames = [];
+    var colors = {};
+    var times = [];
+
+    var lastEvent = 0;
+    var lastBuff = 0;
+    var lastDispell = 0;
+
+    container.innerHTML = "";
+
+    for (var i = 0; i < casts.length; i++) {
+        var evt = casts[i];
+        if (!evt.end) {
+            console.log("event missing end", evt);
+			switch (evt.cast) {
+				case 'Violent Eruption':
+					evt.end = evt.start+3;
+					break;
+				default:
+					evt.end = evt.start+1;
+					break;
+			}
+        }
+        if (evt.end-evt.start <= 0) {
+            evt.end = evt.start+1;
+        }
+        if (evt.end > lastEvent) {
+            lastEvent = evt.end;
+        }
+
+        var n = abilityNames.indexOf(evt.cast);
+        if (n == -1) {
+            abilityNames.push(evt.cast);
+            n = abilityNames.length -1;
+            colors[evt.cast] = palette.pop();
+        }
+
+        if (evt.cast == 'Unstable Essence' && lastBuff == 0) {
+            lastBuff = evt.end;
+        }
+
+        var div = document.createElement("div");
+        div.classList.add('cast');
+        div.classList.add(evt.cast.replace(' ', '-').toLowerCase());
+        div.title = makeTitle(evt);
+        div.style.backgroundColor = colors[evt.cast];
+        div.style.gridColumn = evt.start+" / "+(evt.end)
+        div.style.gridRow = (n+2)+" / span 1"
+        div.innerText = evt.cast;
+
+
+        if (evt.cast == 'Dispell') {
+            var stacks = Math.floor((evt.start-lastBuff)/2);
+            lastBuff = evt.start;
+            div.innerText += ", "+(evt.start-lastDispell)+"s, "+stacks+" stacks";
+
+			lastDispell = evt.start;
+        }
+
+        container.appendChild(div);
+
+        if (evt.cast == 'Violent Eruption') {
+            var div = document.createElement("div");
+            div.classList.add('cast');
+            div.classList.add(evt.cast.replace(' ', '-').toLowerCase()+'-channel');
+            div.title = 'AoE Damage ' + makeTitle({start:evt.end,end:evt.end+8});
+            div.style.backgroundColor = "#ff808080";
+            div.style.gridColumn = evt.end+" / "+(evt.end+8)
+            div.style.gridRow = (n+2)+" / span 1"
+            container.appendChild(div);
+        }
+
+        if (evt.cast == 'Volatile Spew') {
+            var div = document.createElement("div");
+            div.classList.add('cast');
+            div.classList.add(evt.cast.replace(' ', '-').toLowerCase()+'-channel');
+            div.title = 'Swirlies '+makeTitle({start:evt.end,end:evt.end+4});
+            div.style.backgroundColor = "#ff808080";
+            div.style.gridColumn = evt.end+" / "+(evt.end+4)
+            div.style.gridRow = (n+2)+" / span 1"
+            container.appendChild(div);
+        }
+        if (evt.cast == 'Disintegrate') {
+            var div = document.createElement("div");
+            div.classList.add('cast');
+            div.classList.add(evt.cast.replace(' ', '-').toLowerCase()+'-channel');
+            div.title = 'Debuffs ' + makeTitle({start:evt.end,end:evt.end+28});
+            div.style.backgroundColor = "#ff808080";
+            div.style.gridColumn = evt.end+" / "+(evt.end+28)
+            div.style.gridRow = (n+2)+" / span 1"
+            container.appendChild(div);
+        }
+
+        if (times.indexOf(evt.start) != -1) {
+            continue;
+        }
+
+        times.push(evt.start);
+
+        div = document.createElement("div");
+        div.classList.add('t');
+        div.style.gridColumn = evt.start + " / span 1";
+        div.innerText = fmtTime(evt.start);
+        container.appendChild(div);
+    }
+
+    container.style.gridTemplateColumns = "repeat("+(lastEvent+1)+", var(--x))"
+}
+
+var noteText = window.localStorage.getItem('mrt-note');
+if (noteText) {
+	document.getElementById('note').value = noteText;
+}
+render();
+
+</script>
+
+<body>
+</body>
+</html>
